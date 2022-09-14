@@ -1,7 +1,18 @@
 {
+    "name": "src",
+    "version": "1.0.0",
+    "description": "Backend cohort for Plutonium(July-Nov)",
+    "main": "index.js",
+    "scripts": {
+        "start": "node src/index.js"
+    },
+    "author": "Vishal Pasi",
+    "license": "ISC",
     "dependencies": {
-        "express": "^4.18.1",
-        "mongoose": "^6.6.0",
-        "nodemon": "^2.0.19"
+        "body-parser": "^1.19.0",
+        "express": "^4.17.1",
+        "moment": "^2.29.1",
+        "mongoose": "^6.5.4",
+        "nodemon": "^2.0.15"
     }
 }
