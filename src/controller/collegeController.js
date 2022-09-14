@@ -6,7 +6,8 @@ const isValid = function(value) {
     if(typeof (value) == "string" && (value).trim().length == 0)return false
     return true
 } 
-const regName = /^[A-Z , a-z]+$/
+const regFullName = /^[A-Z , a-z]+$/
+const regName = /^[A-Za-z]+$/
 
 const createCollage = async function (req, res) {
     try {
@@ -24,7 +25,7 @@ const createCollage = async function (req, res) {
         if(isNameExist) return res.status(400).send({status:false,message:"name is already exist"})
 
         if (!isValid(fullName)) return res.status(400).send({ status: false, message: "fulName is Mendatory" })
-        if(!regName.test(fullName)) return res.status(400).send({ status: false, message: "FullName is invilid" })
+        if(!regFullName.test(fullName)) return res.status(400).send({ status: false, message: "FullName is invilid" })
 
         if (!isValid(logoLink)) return res.status(400).send({ status: false, msg: "LogoLink is Mendatory" })
 

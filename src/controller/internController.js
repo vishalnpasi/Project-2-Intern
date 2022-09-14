@@ -22,6 +22,7 @@ const createIntern = async function (req, res) {
 
         if (!isValid(email)) return res.status(400).send({ status: false, message: "email is mendatory" })
         if(!regforemail.test(email)) return res.status(400).send({ status: false, message: "email is invilid" })
+        
         let foundEmail = await internModel.findOne({email:email})
         if(foundEmail) return res.status(400).send({ status: false, message: "Email is already exist" })
 
