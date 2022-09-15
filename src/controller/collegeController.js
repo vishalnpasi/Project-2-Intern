@@ -11,30 +11,29 @@ const regName = /^[A-Za-z]+$/
 
 const createCollage = async function (req, res) {
     try {
-        
         let data = req.body;
         if(Object.keys(data).length==0) return res.status(400).send({ status: false, message: "Data not Given" })
 
         let { name, fullName, logoLink } = data
 
-        if (!isValid(name)) return res.status(400).send({ status: false, message: "Name is Mendatory" })
+        if (!isValid(name)) return res.status(400).send({ status: false, message: "Name is Mandatory" })
 
-        if(!regName.test(name)) return res.status(400).send({ status: false, message: "name is invilid" })
+        if(!regName.test(name)) return res.status(400).send({ status: false, message: "name is invalid" })
 
         let isNameExist = await collegeModel.findOne({name:name})
         if(isNameExist) return res.status(400).send({status:false,message:"name is already exist"})
 
-        if (!isValid(fullName)) return res.status(400).send({ status: false, message: "fulName is Mendatory" })
-        if(!regFullName.test(fullName)) return res.status(400).send({ status: false, message: "FullName is invilid" })
+        if (!isValid(fullName)) return res.status(400).send({ status: false, message: "fulName is Mandatory" })
+        if(!regFullName.test(fullName)) return res.status(400).send({ status: false, message: "FullName is invalid" })
 
-        if (!isValid(logoLink)) return res.status(400).send({ status: false, msg: "LogoLink is Mendatory" })
+        if (!isValid(logoLink)) return res.status(400).send({ status: false, message: "LogoLink is Mandatory" })
 
         let collegeData = await collegeModel.create(data)
 
         res.status(201).send({status:true, data: collegeData })
 
     } catch (err) {
-        res.status(500).send({ status: false, msg: err.message });
+        res.status(500).send({ status: false, message: err.message });
     }
 }
 const getCollages = async function (req, res) {
