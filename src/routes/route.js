@@ -6,9 +6,15 @@ const internController = require('../controller/internController')
 
 router.post('/functionup/colleges', collageController.createCollage) 
 
-router.post('/functionup/interns',internController.createIntern)
+router.post('/functionup/interns' , internController.createIntern)
 
 router.get('/functionup/collegeDetails',collageController.getCollages)
+
+// for invalid endPoint
+
+router.use(function(req,res){
+    res.status(400).send({status:false, message:" Rout Not Found "})
+})
 
 module.exports = router;
 

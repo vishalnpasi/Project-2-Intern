@@ -11,6 +11,7 @@ const regName = /^[A-Za-z]+$/
 
 const createCollage = async function (req, res) {
     try {
+        res.setHeader("Access-Control-Allow-Origin","*")
         let data = req.body;
         if(Object.keys(data).length==0) return res.status(400).send({ status: false, message: "Data not Given" })
 
